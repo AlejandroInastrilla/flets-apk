@@ -1,6 +1,4 @@
-# .github/workflows/build-apk.yml
 name: Build APK
-
 on:
   push:
     branches: [ main ]
@@ -37,12 +35,11 @@ jobs:
         run: |
           buildozer android debug
 
+      - name: List files in bin directory
+        run: ls -la bin/
+
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
           name: flet-apk
           path: bin/*.apk
-
-
-
- 
